@@ -11,7 +11,7 @@
 </head>
 <body>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
+  <link href="styles.scss" rel="stylesheet">
 
   <div class="container">
     <div class="row flex-lg-nowrap">
