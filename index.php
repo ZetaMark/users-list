@@ -30,7 +30,7 @@
                         <?php include_once 'thead.html' ?>
                       </thead>
                       <tbody>
-                        <?php include_once 'users.php'; ?>
+                      <?php include 'users.php'; ?>
                       </tbody>
                     </table>
                   </div>
@@ -47,5 +47,6 @@
   </div>
   <script src = "actions_block.js"></script>
   <script src = "check_box_actions.js"></script>
+  <script src = "add_user.js"></script>
 </body>
 </html>

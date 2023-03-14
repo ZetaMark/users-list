@@ -10,10 +10,11 @@ $result = mysqli_query($conn, $sql);
 // // преобразование массива в JSON-строку
 // $json = json_encode($data);
 
+// header('Content-Type: application/json');
+
 // // вывод JSON-строки
 // echo $json;
 ?>
-
 <?php 
 if($result = $conn->query($sql)){
     foreach($result as $row){
@@ -42,4 +43,5 @@ if($result = $conn->query($sql)){
 <?php 
     }
 }
+
 ?>
