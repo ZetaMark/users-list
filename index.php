@@ -7,7 +7,6 @@
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src = "actions_block.js"></script>
 </head>
 <body>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -44,8 +43,9 @@
         <!-- User Form Modal -->
         <?php include 'user_form_modal.html' ?>
       </div>
-
     </div>
   </div>
+  <script src = "actions_block.js"></script>
+  <script src = "check_box_actions.js"></script>
 </body>
 </html>
