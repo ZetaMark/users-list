@@ -41,7 +41,7 @@
           </div>
         </div>
         <!-- User Form Modal -->
-        <?php include 'user_form_modal.html' ?>
+        <?php include 'user_form_modal.php' ?>
       </div>
     </div>
   </div>
@@ -49,5 +49,6 @@
   <script src = "check_box_actions.js"></script>
   <script src = "add_user.js"></script>
   <script src = "delete_user.js"></script>
+  <script src = "edit_user.js"></script>
 </body>
 </html>

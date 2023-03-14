@@ -10,6 +10,9 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
+                <input id="modal-id" type="hidden" data-id="">
+            </div>
+            <div class="form-group">
               <label for="first-name" class="col-form-label">First Name:</label>
               <input type="text" class="form-control" id="first-name">
             </div>
@@ -33,7 +36,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary add-user">Save</button>
+          <button type="button" class="btn btn-primary save-user">Save</button>
         </div>
       </div>
     </div>
