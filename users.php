@@ -34,8 +34,8 @@ if($result = $conn->query($sql)){
     <div class="btn-group align-top">
         <button data-row="<?php echo $row["id"] ?>" class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal"
         data-target="#user-form-modal">Edit</button>
-        <button data-row="<?php echo $row["id"] ?>" class="btn btn-sm btn-outline-secondary badge" type="button"><i
-            class="fa fa-trash"></i></button>
+        <button value="<?php echo $row["id"] ?>" class="btn btn-sm btn-outline-secondary badge delete-user" type="button"><i
+        data-id="<?php echo $row["id"] ?>" class="fa fa-trash"></i></button>
     </div>
     </td>
 </tr>
