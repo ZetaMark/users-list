@@ -12,6 +12,7 @@
 <body>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
+
   <div class="container">
     <div class="row flex-lg-nowrap">
       <div class="col">
@@ -27,19 +28,7 @@
                   <div class="table-responsive table-lg mt-3">
                     <table class="table table-bordered">
                       <thead>
-                        <tr>
-                          <th class="align-top">
-                            <div
-                              class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0">
-                              <input type="checkbox" class="custom-control-input" id="all-items">
-                              <label class="custom-control-label" for="all-items"></label>
-                            </div>
-                          </th>
-                          <th class="max-width">Name</th>
-                          <th class="sortable">Role</th>
-                          <th>Status</th>
-                          <th>Actions</th>
-                        </tr>
+                        <?php include_once 'thead.html' ?>
                       </thead>
                       <tbody>
                         <?php include_once 'users.php'; ?>
@@ -53,35 +42,7 @@
           </div>
         </div>
         <!-- User Form Modal -->
-        
-        <div class="modal fade" id="user-form-modal" tabindex="-1" aria-labelledby="user-form-modal" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="UserModalLabel">Add user</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="first-name" class="col-form-label">First Name:</label>
-                  <input type="text" class="form-control" id="first-name">
-                </div>
-                <div class="form-group">
-                  <label for="last-name" class="col-form-label">Last Name:</label>
-                  <input type="text" class="form-control" id="last-name">
-                </div>
-                
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </div>
+        <?php include 'user_form_modal.html' ?>
       </div>
 
     </div>
