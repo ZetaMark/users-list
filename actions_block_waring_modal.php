@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-                <label for="actions_block_warning_message" class="col-form-label">No users selected</label>
+                <label for="actions_block_warning_message" class="col-form-label"></label>
                 <input type="hidden" class="form-control" id="actions_block_warning_message">
         </div>
       </div>

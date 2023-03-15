@@ -24,7 +24,6 @@ $('.edit-user').on('click', function(event) {
         $(this).find('input, select').val('').prop('checked', false);
     });
     
-    $("#user-form-modal").modal("hide");
 
 });
 
