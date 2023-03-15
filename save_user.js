@@ -30,8 +30,7 @@ $.ajax({
     
     
 });
-
-$('#user-form-modal').modal('hide');
+    $("#user-form-modal").modal("hide");
 });
 
 

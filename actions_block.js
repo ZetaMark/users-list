@@ -15,9 +15,15 @@ var activeCheckboxes = [];
 $('.row-checkbox:checked').each(function() {
   activeCheckboxes.push($(this).attr('data-id'));
 });
-console.log(activeCheckboxes);
+console.dir(activeCheckboxes);
 
-  if(selectedValue == "Delete"){
+  if(activeCheckboxes.length == 0){
+    $('#actions-block-warning-modal').modal('show');
+    $('#actions_block_warning_message').prev('label').text('No users selected');
+
+    
+
+  } else if(selectedValue == "Delete"){
 
     $("#delete-id").val(JSON.stringify(activeCheckboxes));
     $('#confirm-delete-modal').modal('show');
@@ -57,5 +63,9 @@ console.log(activeCheckboxes);
           console.log(response); // Вивести відповідь сервера в консоль
       },
     });
+  } else if(selectedValue == "-Please Select-") {
+    console.log(selectedValue + " PLEASE SELECT OMG" );
+    $('#actions-block-warning-modal').modal('show');
+    $('#actions_block_warning_message').prev('label').text('Please choose action');
   }
 }

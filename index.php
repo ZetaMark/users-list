@@ -43,6 +43,8 @@
         <!-- User Form Modal -->
         <?php include 'user_form_modal.php' ?>
         <?php include 'confirm_delete_modal.php' ?>
+        <?php include 'actions_block_waring_modal.php' ?>
+
       </div>
     </div>
   </div>
