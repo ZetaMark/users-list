@@ -28,6 +28,8 @@ $.ajax({
         console.log(response); // Вивести відповідь сервера в консоль
     },
 });
+
+$('#confirm-delete-modal').modal('hide');
 });
 
 

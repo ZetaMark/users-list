@@ -30,6 +30,8 @@ $.ajax({
     
     
 });
+
+$('#user-form-modal').modal('hide');
 });
 
 
