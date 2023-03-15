@@ -8,5 +8,50 @@ const select = parent.querySelector('select');
 // Отримати вибране значення у селекті
 const selectedValue = select.value;
 
-  console.log(selectedValue); // Виводить обране значення селект боксу в консоль
+console.log(selectedValue); // Виводить обране значення селект боксу в консоль
+
+
+var activeCheckboxes = [];
+$('input[type="checkbox"]:checked').each(function() {
+  activeCheckboxes.push($(this).attr('data-id'));
+});
+console.log(activeCheckboxes);
+
+  if(selectedValue == "Delete"){
+    $.ajax({
+      type: "POST", // Використати метод POST для надсилання даних
+      url: "deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+      data: { // Надіслати дані у форматі JSON
+          id: activeCheckboxes
+      },
+      success: function(response) { // Обробник успішної відповіді від сервера
+          console.log(response); // Вивести відповідь сервера в консоль
+      },
+    });
+  } else if(selectedValue == "Set active") {
+    $.ajax({
+      type: "POST", // Використати метод POST для надсилання даних
+      url: "setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+      data: { // Надіслати дані у форматі JSON
+          id: activeCheckboxes,
+          active: 1
+      },
+      success: function(response) { // Обробник успішної відповіді від сервера
+          console.log(response); // Вивести відповідь сервера в консоль
+      },
+    });
+  }
+  else if(selectedValue == "Set not active") {
+    $.ajax({
+      type: "POST", // Використати метод POST для надсилання даних
+      url: "setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+      data: { // Надіслати дані у форматі JSON
+          id: activeCheckboxes,
+          active: 0
+      },
+      success: function(response) { // Обробник успішної відповіді від сервера
+          console.log(response); // Вивести відповідь сервера в консоль
+      },
+    });
+  }
 }

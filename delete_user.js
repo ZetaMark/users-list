@@ -3,7 +3,8 @@
 $('.delete-user').on('click', function(event) {
     // Отримати значення id 
     const clickedDeleteButton = $(event.target);
-    let id = clickedDeleteButton.attr('data-id');
+    let id = [clickedDeleteButton.attr('data-id')];
+    console.log(id);
     // Надіслати дані на сервер
 $.ajax({
     type: "POST", // Використати метод POST для надсилання даних
