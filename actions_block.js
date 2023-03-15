@@ -1,4 +1,4 @@
-function handleClick(event) {
+function actionsBlockClick(event) {
 // Отримати елемент, на якому була викликана подія (в даному випадку, кнопка "ОК")
 const button = event.target;
 // Отримати батьківський елемент кнопки (div)
@@ -12,7 +12,7 @@ console.log(selectedValue); // Виводить обране значення с
 
 
 var activeCheckboxes = [];
-$('input[type="checkbox"]:checked').each(function() {
+$('.row-checkbox:checked').each(function() {
   activeCheckboxes.push($(this).attr('data-id'));
 });
 console.log(activeCheckboxes);

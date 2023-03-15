@@ -23,7 +23,7 @@ if($result = $conn->query($sql)){
     <td class="align-middle">
     <div
         class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
-        <input data-id="<?php echo $row["id"]?>" id="checkbox-<?php echo $row["id"]?>" type="checkbox" class="custom-control-input">
+        <input data-id="<?php echo $row["id"]?>" id="checkbox-<?php echo $row["id"]?>" type="checkbox" class="custom-control-input row-checkbox">
         <label class="custom-control-label" for="checkbox-<?php echo $row["id"]?>"></label>
     </div>
     </td>
