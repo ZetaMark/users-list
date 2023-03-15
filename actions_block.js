@@ -18,16 +18,20 @@ $('.row-checkbox:checked').each(function() {
 console.log(activeCheckboxes);
 
   if(selectedValue == "Delete"){
-    $.ajax({
-      type: "POST", // Використати метод POST для надсилання даних
-      url: "deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
-      data: { // Надіслати дані у форматі JSON
-          id: activeCheckboxes
-      },
-      success: function(response) { // Обробник успішної відповіді від сервера
-          console.log(response); // Вивести відповідь сервера в консоль
-      },
-    });
+
+    $("#delete-id").val(JSON.stringify(activeCheckboxes));
+    $('#confirm-delete-modal').modal('show');
+
+    // $.ajax({
+    //   type: "POST", // Використати метод POST для надсилання даних
+    //   url: "deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+    //   data: { // Надіслати дані у форматі JSON
+    //       id: activeCheckboxes
+    //   },
+    //   success: function(response) { // Обробник успішної відповіді від сервера
+    //       console.log(response); // Вивести відповідь сервера в консоль
+    //   },
+    // });
   } else if(selectedValue == "Set active") {
     $.ajax({
       type: "POST", // Використати метод POST для надсилання даних

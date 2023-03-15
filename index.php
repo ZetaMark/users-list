@@ -42,12 +42,13 @@
         </div>
         <!-- User Form Modal -->
         <?php include 'user_form_modal.php' ?>
+        <?php include 'confirm_delete_modal.php' ?>
       </div>
     </div>
   </div>
   <script src = "actions_block.js"></script>
   <script src = "check_box_actions.js"></script>
-  <script src = "add_user.js"></script>
+  <script src = "save_user.js"></script>
   <script src = "delete_user.js"></script>
   <script src = "edit_user.js"></script>
 </body>
