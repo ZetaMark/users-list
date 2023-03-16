@@ -1,7 +1,7 @@
 <?php
 require_once 'database.php';
 // Валідація даних
-$id = isset($_POST['id']) ? $_POST['id'] : NULL;
+$id = (isset($_POST['id']) && is_numeric($_POST['id'])) ? $_POST['id'] : NULL;
 
 // $firstName = $_POST['firstName'];
 if (preg_match('/^\p{L}+$/u', $_POST['firstName'])) {
@@ -23,7 +23,6 @@ if (preg_match('/^\p{L}+$/u', $_POST['lastName'])) {
 }
 $status = $_POST['status'] == "true" ? 1 : 0;
 $role = $_POST['role'] == "Admin" ? "Admin" : "User";
-
 // Кінець валідації
 
 $sql = "
