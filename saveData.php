@@ -15,7 +15,6 @@ $sql = "
     role = '$role';
 ";
 
-//SELECT LAST_INSERT_ID() as id;
 if (mysqli_query($conn, $sql)) {
     //Якщо додаємо новий рядок, то отримуємо id з бд
     if($id == NULL){
@@ -38,13 +37,13 @@ if (mysqli_query($conn, $sql)) {
             'status' => $user['status']
         )
     );
-    echo json_encode($response);
+    return json_encode($response);
 } else {
     $response = array(
         'status' => false,
         'error' => mysqli_error($conn),
         'user' => null
     );
-    echo json_encode($response);
+    return json_encode($response);
 }
 ?>

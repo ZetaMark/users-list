@@ -29,7 +29,7 @@ if($result = $conn->query($sql)){
     </td>
     <td data-first-name="<?php echo $row["first_name"]?>" data-last-name="<?php echo $row["last_name"]?>" id="name-<?php echo $row["id"]?>" class="text-nowrap align-middle"><?php echo $row["first_name"] . " " . $row["last_name"] ?></td>
     <td class="text-nowrap align-middle"><span id="role-<?php echo $row["id"]?>"><?php echo $row["role"]?></span></td>
-    <td data-status="<?php echo $row["status"] ?>" id="status-<?php echo $row["id"]?>" class="text-center align-middle"><i class="fa fa-circle <?php if($row["status"] == 1) echo "active"; else echo "not-active"?>-circle"></i></td>
+    <td data-status="<?php echo $row["status"] ?>" id="status-<?php echo $row["id"]?>" class="text-center align-middle"><i id="status-circle-<?php echo $row["id"]?>" class="fa fa-circle <?php if($row["status"] == 1) echo "active"; else echo "not-active"?>-circle"></i></td>
     <td class="text-center align-middle">
     <div class="btn-group align-top">
         <button data-id="<?php echo $row["id"] ?>" class="btn btn-sm btn-outline-secondary badge edit-user" type="button" data-toggle="modal"

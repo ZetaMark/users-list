@@ -2,18 +2,14 @@
 require_once 'database.php';
 
 $id = $_POST['id'];
+    $sql = "DELETE FROM `user_list` WHERE `user_list`.`id` = $id";
+    if ($result = mysqli_query($conn, $sql)) {
 
-foreach ($id as $idValue){
-    $sql = "DELETE FROM user_list WHERE `user_list`.`id` = $idValue";
-    if (mysqli_query($conn, $sql)) {
-
-        $sql= "SELECT * FROM user_list WHERE id = '$idValue'";
-        $result = mysqli_query($conn, $sql);
-        $user = mysqli_fetch_assoc($result);
+        // $result = mysqli_query($conn, $sql);
         $response = array(
             'status' => true,
             'error' => null,
-            'id' => $idValue
+            'id' => $id
         );
         echo json_encode($response);
     } else {
@@ -24,5 +20,5 @@ foreach ($id as $idValue){
         );
         echo json_encode($response);
     }
-}
+
 ?>

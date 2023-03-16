@@ -3,11 +3,9 @@ require_once 'database.php';
 
 $id = $_POST['id'];
 $active = $_POST['active'];
-foreach ($id as $idValue){
-    $sql = "UPDATE `user_list` SET `status` = $active WHERE `user_list`.`id` = $idValue";
+    $sql = "UPDATE `user_list` SET `status` = $active WHERE `user_list`.`id` = $id";
     if (mysqli_query($conn, $sql)) {
-        //Якщо додаємо новий рядок, то отримуємо id з бд
-        $sql= "SELECT * FROM user_list WHERE id = '$idValue'";
+        $sql= "SELECT * FROM user_list WHERE id = '$id'";
         $result = mysqli_query($conn, $sql);
         $user = mysqli_fetch_assoc($result);
         $response = array(
@@ -30,6 +28,5 @@ foreach ($id as $idValue){
         );
         echo json_encode($response);
     }
-}
 
 ?>

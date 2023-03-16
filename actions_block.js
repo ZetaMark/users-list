@@ -20,14 +20,12 @@ console.dir(activeCheckboxes);
   if(activeCheckboxes.length == 0){
     $('#actions-block-warning-modal').modal('show');
     $('#actions_block_warning_message').prev('label').text('No users selected');
-
-    
-
+  } else if(selectedValue == "-Please Select-") {
+    $('#actions-block-warning-modal').modal('show');
+    $('#actions_block_warning_message').prev('label').text('Please choose action');
   } else if(selectedValue == "Delete"){
-
     $("#delete-id").val(JSON.stringify(activeCheckboxes));
     $('#confirm-delete-modal').modal('show');
-
     // $.ajax({
     //   type: "POST", // Використати метод POST для надсилання даних
     //   url: "deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
@@ -39,32 +37,36 @@ console.dir(activeCheckboxes);
     //   },
     // });
   } else if(selectedValue == "Set active") {
-    $.ajax({
-      type: "POST", // Використати метод POST для надсилання даних
-      url: "setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
-      data: { // Надіслати дані у форматі JSON
-          id: activeCheckboxes,
-          active: 1
-      },
-      success: function(response) { // Обробник успішної відповіді від сервера
-          console.log(response); // Вивести відповідь сервера в консоль
-      },
-    });
+    for(i = 0; i < activeCheckboxes.length; i++){
+      $.ajax({
+        type: "POST", // Використати метод POST для надсилання даних
+        url: "setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+        data: { // Надіслати дані у форматі JSON
+            id: activeCheckboxes[i],
+            active: 1
+        },
+        success: function(response) { // Обробник успішної відповіді від сервера
+            response = JSON.parse(response); // Вивести відповідь сервера в консоль
+            $('#status-circle-' + response['user']['id']).removeClass('not-active-circle').addClass('active-circle');
+        },
+      });
+    }
+
   }
   else if(selectedValue == "Set not active") {
-    $.ajax({
-      type: "POST", // Використати метод POST для надсилання даних
-      url: "setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
-      data: { // Надіслати дані у форматі JSON
-          id: activeCheckboxes,
-          active: 0
-      },
-      success: function(response) { // Обробник успішної відповіді від сервера
-          console.log(response); // Вивести відповідь сервера в консоль
-      },
-    });
-  } else if(selectedValue == "-Please Select-") {
-    $('#actions-block-warning-modal').modal('show');
-    $('#actions_block_warning_message').prev('label').text('Please choose action');
-  }
+    for(i = 0; i < activeCheckboxes.length; i++){  
+      $.ajax({
+        type: "POST", // Використати метод POST для надсилання даних
+        url: "setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+        data: { // Надіслати дані у форматі JSON
+            id: activeCheckboxes[i],
+            active: 0
+        },
+        success: function(response) { // Обробник успішної відповіді від сервера
+          response = JSON.parse(response); // Вивести відповідь сервера в консоль
+          $('#status-circle-' + response['user']['id']).removeClass('active-circle').addClass('not-active-circle');
+        },
+      });
+    }
+  } 
 }

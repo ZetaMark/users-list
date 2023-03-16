@@ -18,17 +18,20 @@ $('.confirm-delete-user').on('click', function() {
     var id = JSON.parse($('#delete-id').val());
     console.log("Всё окей")
     // Надіслати дані на сервер
-$.ajax({
-    type: "POST", // Використати метод POST для надсилання даних
-    url: "deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
-    data: { // Надіслати дані у форматі JSON
-        id: id
-    },
-    success: function(response) { // Обробник успішної відповіді від сервера
-        console.log(response); // Вивести відповідь сервера в консоль
-    },
-});
-
+    for(i = 0; i < id.length; i++){  
+    
+        $.ajax({
+            type: "POST", // Використати метод POST для надсилання даних
+            url: "deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+            data: { // Надіслати дані у форматі JSON
+                id: id[i]
+            },
+            success: function(response) { // Обробник успішної відповіді від сервера
+                response = JSON.parse(response);
+                $('#row-' + response['id']).remove();
+            },
+        });
+    }
 $('#confirm-delete-modal').modal('hide');
 });
 
