@@ -17,13 +17,11 @@ $sql = "
 
 //SELECT LAST_INSERT_ID() as id;
 if (mysqli_query($conn, $sql)) {
-    echo "micro 1: " . microtime() . "_______end";
+    //Якщо додаємо новий рядок, то отримуємо id з бд
     if($id == NULL){
-    $sqlLastInSertId = "SELECT LAST_INSERT_ID() as id;";
-    $LastInsertIdResult = mysqli_query($conn, $sqlLastInSertId);
-    echo "micro 2: " . microtime() . "_____end";
+    $sqlLastInsertId = "SELECT LAST_INSERT_ID() as id;";
+    $LastInsertIdResult = mysqli_query($conn, $sqlLastInsertId);
     $id = (int)mysqli_fetch_assoc($LastInsertIdResult)['id'];
-    var_dump($id);
     }
     $sql= "SELECT * FROM user_list WHERE id = '$id'";
 
