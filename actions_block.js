@@ -64,7 +64,6 @@ console.dir(activeCheckboxes);
       },
     });
   } else if(selectedValue == "-Please Select-") {
-    console.log(selectedValue + " PLEASE SELECT OMG" );
     $('#actions-block-warning-modal').modal('show');
     $('#actions_block_warning_message').prev('label').text('Please choose action');
   }

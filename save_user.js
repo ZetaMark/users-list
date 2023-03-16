@@ -22,13 +22,12 @@ $.ajax({
         console.log("add_user.js success: " + response); // Вивести відповідь сервера в консоль
 
         // Очистити поля форми
+        $('#modal-id').val('');
         $('#first-name').val('');
         $('#last-name').val('');
         $('#switch').prop('checked', false);
         $('#select-role').val('Admin');
     },
-    
-    
 });
     $("#user-form-modal").modal("hide");
 });
