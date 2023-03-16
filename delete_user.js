@@ -1,6 +1,6 @@
 
 // Додати обробник подій натискання на кнопку
-$('.call-modal-delete-user').on('click', function(event) {
+$(document).on('click', '.call-modal-delete-user' , function(event) {
     // Отримати значення id 
     const clickedDeleteButton = $(event.target);
     let id = [clickedDeleteButton.attr('data-id')];
@@ -13,7 +13,8 @@ $('.call-modal-delete-user').on('click', function(event) {
 });
 
 // Додати обробник подій натискання на кнопку
-$('.confirm-delete-user').on('click', function() {
+
+$(document).on('click', '.confirm-delete-user' , function() {
     // Отримати значення id     
     var id = JSON.parse($('#delete-id').val());
     console.log("Всё окей")

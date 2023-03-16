@@ -1,5 +1,5 @@
 // Додати обробник подій натискання на кнопку
-$('.edit-user').on('click', function(event) {
+$(document).on('click', '.edit-user', function(event) {
     // Отримати значення id 
     const clickedEditButton = $(event.target);
     let id = clickedEditButton.attr('data-id');

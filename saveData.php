@@ -31,19 +31,19 @@ if (mysqli_query($conn, $sql)) {
         'error' => null,
         'user' => array(
             'id' => $user['id'],
-            'name_first' => $user['first_name'],
-            'name_last' => $user['last_name'],
+            'first_name' => $user['first_name'],
+            'last_name' => $user['last_name'],
             'role' => $user['role'],
             'status' => $user['status']
         )
     );
-    return json_encode($response);
+    echo json_encode($response);
 } else {
     $response = array(
         'status' => false,
         'error' => mysqli_error($conn),
         'user' => null
     );
-    return json_encode($response);
+    echo json_encode($response);
 }
 ?>

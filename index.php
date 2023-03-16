@@ -29,7 +29,7 @@
                       <thead>
                         <?php include_once 'thead.html' ?>
                       </thead>
-                      <tbody>
+                      <tbody id = "table-body">
                       <?php include 'users.php'; ?>
                       </tbody>
                     </table>
