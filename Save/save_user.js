@@ -10,7 +10,7 @@ $('.save-user').click(function() {
     // Надіслати дані на сервер
 $.ajax({
     type: "POST", // Використати метод POST для надсилання даних
-    url: "saveData.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+    url: "Save/saveData.php", // Вказати шлях до файлу PHP, який оброблятиме дані
     data: { // Надіслати дані у форматі JSON
         id: id,
         firstName: firstName,

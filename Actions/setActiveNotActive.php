@@ -1,5 +1,5 @@
 <?php
-require_once 'database.php';
+require_once '../Database/database.php';
 
 $id = $_POST['id'];
 $active = $_POST['active'];

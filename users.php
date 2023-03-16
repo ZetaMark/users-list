@@ -1,19 +1,8 @@
 <?php 
-require_once 'database.php';
+require_once 'Database/database.php';
 
 $sql = "SELECT * FROM user_list";
 $result = mysqli_query($conn, $sql);
-
-// // получение всех строк результата запроса в виде ассоциативного массива
-// $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-// // преобразование массива в JSON-строку
-// $json = json_encode($data);
-
-// header('Content-Type: application/json');
-
-// // вывод JSON-строки
-// echo $json;
 ?>
 <?php 
 if($result = $conn->query($sql)){

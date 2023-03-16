@@ -1,5 +1,5 @@
 <?php
-require_once 'database.php';
+require_once '../Database/database.php';
 // Валідація даних
 $id = (isset($_POST['id']) && is_numeric($_POST['id'])) ? $_POST['id'] : NULL;
 

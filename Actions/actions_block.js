@@ -20,17 +20,20 @@ console.dir(activeCheckboxes);
   if(activeCheckboxes.length == 0){
     $('#actions-block-warning-modal').modal('show');
     $('#actions_block_warning_message').prev('label').text('No users selected');
-  } else if(selectedValue == "-Please Select-") {
+  } 
+  else if(selectedValue == "-Please Select-") {
     $('#actions-block-warning-modal').modal('show');
     $('#actions_block_warning_message').prev('label').text('Please choose action');
-  } else if(selectedValue == "Delete"){
+  } 
+  else if(selectedValue == "Delete"){
     $("#delete-id").val(JSON.stringify(activeCheckboxes));
     $('#confirm-delete-modal').modal('show');
-  } else if(selectedValue == "Set active") {
+  } 
+  else if(selectedValue == "Set active") {
     for(i = 0; i < activeCheckboxes.length; i++){
       $.ajax({
         type: "POST", // Використати метод POST для надсилання даних
-        url: "setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+        url: "Actions/setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
         data: { // Надіслати дані у форматі JSON
             id: activeCheckboxes[i],
             active: 1
@@ -38,6 +41,7 @@ console.dir(activeCheckboxes);
         success: function(response) { // Обробник успішної відповіді від сервера
             response = JSON.parse(response); // Вивести відповідь сервера в консоль
             $('#status-circle-' + response['user']['id']).removeClass('not-active-circle').addClass('active-circle');
+            $('.custom-control-input').prop('checked', false);
         },
       });
     }
@@ -47,7 +51,7 @@ console.dir(activeCheckboxes);
     for(i = 0; i < activeCheckboxes.length; i++){  
       $.ajax({
         type: "POST", // Використати метод POST для надсилання даних
-        url: "setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+        url: "Actions/setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
         data: { // Надіслати дані у форматі JSON
             id: activeCheckboxes[i],
             active: 0
@@ -55,6 +59,7 @@ console.dir(activeCheckboxes);
         success: function(response) { // Обробник успішної відповіді від сервера
           response = JSON.parse(response); // Вивести відповідь сервера в консоль
           $('#status-circle-' + response['user']['id']).removeClass('active-circle').addClass('not-active-circle');
+          $('.custom-control-input').prop('checked', false);
         },
       });
     }

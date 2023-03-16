@@ -22,7 +22,7 @@ $(document).on('click', '.confirm-delete-user' , function() {
     
         $.ajax({
             type: "POST", // Використати метод POST для надсилання даних
-            url: "deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+            url: "Delete/deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
             data: { // Надіслати дані у форматі JSON
                 id: id[i]
             },
