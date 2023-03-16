@@ -14,9 +14,38 @@ $sql = "
     status = '$status',
     role = '$role';
 ";
+
+//SELECT LAST_INSERT_ID() as id;
 if (mysqli_query($conn, $sql)) {
-    echo "Данные успешно добавлены/обновлены в базе данных.";
+    echo "micro 1: " . microtime() . "_______end";
+    if($id == NULL){
+    $sqlLastInSertId = "SELECT LAST_INSERT_ID() as id;";
+    $LastInsertIdResult = mysqli_query($conn, $sqlLastInSertId);
+    echo "micro 2: " . microtime() . "_____end";
+    $id = (int)mysqli_fetch_assoc($LastInsertIdResult)['id'];
+    var_dump($id);
+    }
+    $sql= "SELECT * FROM user_list WHERE id = '$id'";
+
+    $result = mysqli_query($conn, $sql);
+    $user = mysqli_fetch_assoc($result);
+    $response = array(
+        'status' => true,
+        'error' => null,
+        'user' => array(
+            'id' => $user['id'],
+            'name_first' => $user['first_name'],
+            'name_last' => $user['last_name'],
+            'status' => $user['status'] == 1 ? true : false
+        )
+    );
+    echo json_encode($response);
 } else {
-    echo "Ошибка: " . mysqli_error($conn);
+    $response = array(
+        'status' => false,
+        'error' => mysqli_error($conn),
+        'user' => null
+    );
+    echo json_encode($response);
 }
 ?>
