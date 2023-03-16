@@ -17,7 +17,6 @@ $(document).on('click', '.call-modal-delete-user' , function(event) {
 $(document).on('click', '.confirm-delete-user' , function() {
     // Отримати значення id     
     var id = JSON.parse($('#delete-id').val());
-    console.log("Всё окей")
     // Надіслати дані на сервер
     for(i = 0; i < id.length; i++){  
     

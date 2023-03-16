@@ -1,10 +1,14 @@
 <?php
 require_once 'database.php';
+// Валідація даних
 $id = isset($_POST['id']) ? $_POST['id'] : NULL;
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $status = $_POST['status'] == "true" ? 1 : 0;
-$role = $_POST['role'];
+$role = $_POST['role'] == "Admin" ? "Admin" : "User";
+
+// Кінець валідації
+
 $sql = "
     INSERT INTO user_list (id, first_name, last_name, status, role) 
     VALUES ('$id', '$firstName', '$lastName', '$status', '$role')

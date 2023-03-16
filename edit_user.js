@@ -7,8 +7,6 @@ $(document).on('click', '.edit-user', function(event) {
     var lastName = $("#name-" + id).attr("data-last-name");
     var role = $("#role-" + id).html();
     var status = $("#status-" + id).attr("data-status");
-    console.log(id,firstName,lastName,role,status)
-
     // Устанавливаем значения полей в модальном окне
     $("#modal-id").val(id);
     $("#first-name").val(firstName);
