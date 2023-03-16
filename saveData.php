@@ -2,8 +2,25 @@
 require_once 'database.php';
 // Валідація даних
 $id = isset($_POST['id']) ? $_POST['id'] : NULL;
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
+
+// $firstName = $_POST['firstName'];
+if (preg_match('/^\p{L}+$/u', $_POST['firstName'])) {
+    // переменная содержит только буквы всех языков
+    $firstName = $_POST['firstName'];
+} else {
+    // переменная содержит что-то еще, помимо букв
+    // оставляем только буквы
+    $firstName = preg_replace('/[^[:alpha:]]+/u', '', $_POST['firstName']); ;
+}
+// $lastName = $_POST['lastName'];
+if (preg_match('/^\p{L}+$/u', $_POST['lastName'])) {
+    // переменная содержит только буквы всех языков
+    $lastName = $_POST['lastName'];
+} else {
+    // переменная содержит что-то еще, помимо букв
+    // оставляем только буквы
+    $lastName = preg_replace('/[^[:alpha:]]+/u', '', $_POST['lastName']); ;
+}
 $status = $_POST['status'] == "true" ? 1 : 0;
 $role = $_POST['role'] == "Admin" ? "Admin" : "User";
 
