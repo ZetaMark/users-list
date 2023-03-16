@@ -42,6 +42,7 @@ console.dir(activeCheckboxes);
             response = JSON.parse(response); // Вивести відповідь сервера в консоль
             $('#status-circle-' + response['user']['id']).removeClass('not-active-circle').addClass('active-circle');
             $('.custom-control-input').prop('checked', false);
+            $('#select-box').val('-Please Select-');
         },
       });
     }
@@ -60,6 +61,7 @@ console.dir(activeCheckboxes);
           response = JSON.parse(response); // Вивести відповідь сервера в консоль
           $('#status-circle-' + response['user']['id']).removeClass('active-circle').addClass('not-active-circle');
           $('.custom-control-input').prop('checked', false);
+          $('#select-box').val('-Please Select-');
         },
       });
     }

@@ -29,6 +29,7 @@ $(document).on('click', '.confirm-delete-user' , function() {
             success: function(response) { // Обробник успішної відповіді від сервера
                 response = JSON.parse(response);
                 $('#row-' + response['id']).remove();
+                $('#select-box').val('-Please Select-');
             },
         });
     }
