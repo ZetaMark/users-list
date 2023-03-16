@@ -55,7 +55,7 @@ $.ajax({
                  $("<div>", { class: "btn-group align-top" }).append(
                      $("<button>", { "data-id": id, class: "btn btn-sm btn-outline-secondary badge edit-user", type: "button", "data-toggle": "modal", "data-target": "#user-form-modal" }).text("Edit"),
                      $("<button>", { "data-id": id, class: "btn btn-sm btn-outline-secondary badge call-modal-delete-user", type: "button", "data-toggle": "modal", "data-target": "#confirm-delete-modal" }).append(
-                         $("<i>", { "data-id": id, 'data-toggle': 'modal', 'data-target': '#confirm-delete-modal', class: "fa fa-trash" })
+                         $("<i>", { "data-status": status, "data-id": id, 'data-toggle': 'modal', 'data-target': '#confirm-delete-modal', class: "fa fa-trash" })
                      )
                  )
              );
