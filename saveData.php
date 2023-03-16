@@ -23,8 +23,8 @@ if (mysqli_query($conn, $sql)) {
     $LastInsertIdResult = mysqli_query($conn, $sqlLastInsertId);
     $id = (int)mysqli_fetch_assoc($LastInsertIdResult)['id'];
     }
-    $sql= "SELECT * FROM user_list WHERE id = '$id'";
 
+    $sql= "SELECT * FROM user_list WHERE id = '$id'";
     $result = mysqli_query($conn, $sql);
     $user = mysqli_fetch_assoc($result);
     $response = array(
@@ -34,7 +34,8 @@ if (mysqli_query($conn, $sql)) {
             'id' => $user['id'],
             'name_first' => $user['first_name'],
             'name_last' => $user['last_name'],
-            'status' => $user['status'] == 1 ? true : false
+            'role' => $user['role'],
+            'status' => $user['status']
         )
     );
     echo json_encode($response);
