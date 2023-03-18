@@ -42,7 +42,7 @@ $.ajax({
              // Создаем ячейки таблицы для каждого столбца
              var $td1 = $("<td>", { class: "align-middle" }).append(
                  $("<div>", { class: "custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top" }).append(
-                     $("<input>", { id: "checkbox-" + id, type: "checkbox", class: "custom-control-input row-checkbox", "data-id": id }),
+                     $("<input>", { id: "checkbox-" + id, type: "checkbox", class: "custom-control-input checkbox-item", "data-id": id }),
                      $("<label>", { class: "custom-control-label", for: "checkbox-" + id })
                  )
              );

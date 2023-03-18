@@ -12,7 +12,7 @@ const selectedValue = select.value;
 
 
 var activeCheckboxes = [];
-$('.row-checkbox:checked').each(function() {
+$('.checkbox-item:checked').each(function() {
   activeCheckboxes.push($(this).attr('data-id'));
 });
 console.dir(activeCheckboxes);
