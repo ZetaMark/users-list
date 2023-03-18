@@ -9,6 +9,7 @@ $(document).on('click', '.edit-user', function(event) {
     var status = $("#status-" + id).attr("data-status");
     var action = $("#UserModalLabel").attr("data-action");
     // Устанавливаем значения полей в модальном окне
+
     $("#UserModalLabel").text("Edit user");
     $("#modal-id").val(id);
     $("#first-name").val(firstName);
@@ -21,7 +22,8 @@ $(document).on('click', '.edit-user', function(event) {
     
     // Очищаємо поля модального вікна після закриття
     $('#user-form-modal').on('hidden.bs.modal', function () {
-        $(this).find('input, select').val('').prop('checked', false);
+        $(this).find('input').val('').prop('checked', false);
+        $(this).find('select').val('Admin');
     });
     
 
