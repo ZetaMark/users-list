@@ -10,7 +10,6 @@ const selectedValue = select.value;
 
 // console.log(selectedValue); // Виводить обране значення селект боксу в консоль
 
-
 var activeCheckboxes = [];
 $('.checkbox-item:checked').each(function() {
   activeCheckboxes.push($(this).attr('data-id'));

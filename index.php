@@ -53,5 +53,6 @@
   <script src = "Save/save_user.js"></script>
   <script src = "Delete/delete_user.js"></script>
   <script src = "Edit/edit_user.js"></script>
+  <script src = "Add/add_user.js"></script>
 </body>
 </html>

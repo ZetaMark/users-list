@@ -1,13 +1,15 @@
 // Додати обробник подій натискання на кнопку
 $(document).on('click', '.edit-user', function(event) {
-    // Отримати значення id 
+    // Отримати значення id  
     const clickedEditButton = $(event.target);
     let id = clickedEditButton.attr('data-id');
     var firstName = $("#name-" + id).attr("data-first-name");
     var lastName = $("#name-" + id).attr("data-last-name");
     var role = $("#role-" + id).html();
     var status = $("#status-" + id).attr("data-status");
+    var action = $("#UserModalLabel").attr("data-action");
     // Устанавливаем значения полей в модальном окне
+    $("#UserModalLabel").text("Edit user");
     $("#modal-id").val(id);
     $("#first-name").val(firstName);
     $("#last-name").val(lastName);

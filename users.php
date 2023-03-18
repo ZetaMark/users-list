@@ -21,7 +21,7 @@ if($result = $conn->query($sql)){
     <td data-status="<?php echo $row["status"] ?>" id="status-<?php echo $row["id"]?>" class="text-center align-middle"><i id="status-circle-<?php echo $row["id"]?>" class="fa fa-circle <?php if($row["status"] == 1) echo "active"; else echo "not-active"?>-circle"></i></td>
     <td class="text-center align-middle">
     <div class="btn-group align-top">
-        <button data-id="<?php echo $row["id"] ?>" class="btn btn-sm btn-outline-secondary badge edit-user" type="button" data-toggle="modal"
+        <button data-action="edit" data-id="<?php echo $row["id"] ?>" class="btn btn-sm btn-outline-secondary badge edit-user" type="button" data-toggle="modal"
         data-target="#user-form-modal">Edit</button>
         <button  data-id="<?php echo $row["id"] ?>" data-toggle="modal"
         data-target="#confirm-delete-modal" class="btn btn-sm btn-outline-secondary badge call-modal-delete-user" type="button"><i data-status="<?php echo $row["status"] ?>" data-id="<?php echo $row["id"]?>" data-toggle="modal"
