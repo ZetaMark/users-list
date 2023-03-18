@@ -1,3 +1,3 @@
-$('#add-user-button').click(function() {
-$("#UserModalLabel").text("Add user")
+$('#add-user-button').click(function () {
+  $("#UserModalLabel").text("Add user")
 });

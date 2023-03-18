@@ -1,29 +1,57 @@
 <?php
 require_once '../Database/database.php';
-// Валідація даних
+// Отримання змінних
 $id = (isset($_POST['id']) && is_numeric($_POST['id'])) ? $_POST['id'] : NULL;
-
-// $firstName = $_POST['firstName'];
-if (preg_match('/^\p{L}+$/u', $_POST['firstName'])) {
-    // переменная содержит только буквы всех языков
-    $firstName = $_POST['firstName'];
-} else {
-    // переменная содержит что-то еще, помимо букв
-    // оставляем только буквы
-    $firstName = preg_replace('/[^[:alpha:]]+/u', '', $_POST['firstName']); ;
-}
-// $lastName = $_POST['lastName'];
-if (preg_match('/^\p{L}+$/u', $_POST['lastName'])) {
-    // переменная содержит только буквы всех языков
-    $lastName = $_POST['lastName'];
-} else {
-    // переменная содержит что-то еще, помимо букв
-    // оставляем только буквы
-    $lastName = preg_replace('/[^[:alpha:]]+/u', '', $_POST['lastName']); ;
-}
+$firstName = $_POST['firstName'];
+$lastName = $_POST['lastName'];
 $status = $_POST['status'] == "true" ? 1 : 0;
 $role = $_POST['role'] == "Admin" ? "Admin" : "User";
+// Валідація даних
+if(empty($firstName)){
+    $response = array(
+        'status' => false,
+        'error' => array(
+            'code' => 400,
+            'message' => "Недопустиме значення 'First Name'. Поле 'First Name' не може бути пустим.",
+        )
+    );
+    echo json_encode($response,JSON_UNESCAPED_UNICODE);
+    die();
+}
+if(empty($lastName)){
+    $response = array(
+        'status' => false,
+        'error' => array(
+            'code' => 400,
+            'message' => "Недопустиме значення 'Last Name'. Поле 'Last Name' не може бути пустим.",
+        )
+    );
+    echo json_encode($response,JSON_UNESCAPED_UNICODE);
+    die();
+}
 // Кінець валідації
+
+// Нормалізация
+// if (preg_match('/^\p{L}+$/u', $_POST['firstName'])) {
+//     // переменная содержит только буквы всех языков
+//     $firstName = $_POST['firstName'];
+
+// } else {
+//     // переменная содержит что-то еще, помимо букв
+//     // оставляем только буквы
+//     $firstName = preg_replace('/[^[:alpha:]]+/u', '', $_POST['firstName']);
+
+// }
+// // $lastName = $_POST['lastName'];
+// if (preg_match('/^\p{L}+$/u', $_POST['lastName'])) {
+//     // переменная содержит только буквы всех языков
+//     $lastName = $_POST['lastName'];
+// } else {
+//     // переменная содержит что-то еще, помимо букв
+//     // оставляем только буквы
+//     $lastName = preg_replace('/[^[:alpha:]]+/u', '', $_POST['lastName']);
+//     ;
+// }
 
 $sql = "
     INSERT INTO user_list (id, first_name, last_name, status, role) 
@@ -37,13 +65,13 @@ $sql = "
 
 if (mysqli_query($conn, $sql)) {
     //Якщо додаємо новий рядок, то отримуємо id з бд
-    if($id == NULL){
-    $sqlLastInsertId = "SELECT LAST_INSERT_ID() as id;";
-    $LastInsertIdResult = mysqli_query($conn, $sqlLastInsertId);
-    $id = (int)mysqli_fetch_assoc($LastInsertIdResult)['id'];
+    if ($id == NULL) {
+        $sqlLastInsertId = "SELECT LAST_INSERT_ID() as id;";
+        $LastInsertIdResult = mysqli_query($conn, $sqlLastInsertId);
+        $id = (int) mysqli_fetch_assoc($LastInsertIdResult)['id'];
     }
 
-    $sql= "SELECT * FROM user_list WHERE id = '$id'";
+    $sql = "SELECT * FROM user_list WHERE id = '$id'";
     $result = mysqli_query($conn, $sql);
     $user = mysqli_fetch_assoc($result);
     $response = array(

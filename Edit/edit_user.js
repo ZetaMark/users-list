@@ -1,5 +1,5 @@
 // Додати обробник подій натискання на кнопку
-$(document).on('click', '.edit-user', function(event) {
+$(document).on('click', '.edit-user', function (event) {
     // Отримати значення id  
     const clickedEditButton = $(event.target);
     let id = clickedEditButton.attr('data-id');
@@ -16,10 +16,10 @@ $(document).on('click', '.edit-user', function(event) {
     $("#last-name").val(lastName);
     $("#switch").prop("checked", status == 1 ? true : false);
     $("#select-role").val(role);
-  
+
     // Відкриваємо модальне вікно
     $("#user-form-modal").modal("show");
-    
+
     // Очищаємо поля модального вікна після закриття
     $('#user-form-modal').on('hidden.bs.modal', function () {
         $(this).find('input').val('').prop('checked', false);
@@ -27,7 +27,7 @@ $(document).on('click', '.edit-user', function(event) {
         $("#first-name").removeClass("is-invalid");
         $("#last-name").removeClass("is-invalid");
     });
-    
+
 
 });
 

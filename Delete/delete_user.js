@@ -1,40 +1,40 @@
 
 // Додати обробник подій натискання на кнопку
-$(document).on('click', '.call-modal-delete-user' , function(event) {
+$(document).on('click', '.call-modal-delete-user', function (event) {
     // Отримати значення id 
     const clickedDeleteButton = $(event.target);
     let id = [clickedDeleteButton.attr('data-id')];
     console.log(id);
 
     $("#delete-id").val(JSON.stringify(id));
-
-    // Надіслати дані на сервер
-
 });
 
 // Додати обробник подій натискання на кнопку
 
-$(document).on('click', '.confirm-delete-user' , function() {
+$(document).on('click', '.confirm-delete-user', function () {
     // Отримати значення id     
     var id = JSON.parse($('#delete-id').val());
     // Надіслати дані на сервер
-    for(i = 0; i < id.length; i++){  
-    
+    for (i = 0; i < id.length; i++) {
+
         $.ajax({
             type: "POST", // Використати метод POST для надсилання даних
             url: "Delete/deleteUser.php", // Вказати шлях до файлу PHP, який оброблятиме дані
             data: { // Надіслати дані у форматі JSON
                 id: id[i]
             },
-            success: function(response) { // Обробник успішної відповіді від сервера
+            success: function (response) { // Обробник успішної відповіді від сервера
                 response = JSON.parse(response);
                 $('#row-' + response['id']).remove();
                 $('#select-box').val('-Please Select-');
-                // $('.custom-control-input').prop('checked', false);
+                console.log(response);
+                if ($('.checkbox-item:checked').length === 0) {
+                    $('#all-items').prop('checked', false);
+                }
             },
         });
     }
-$('#confirm-delete-modal').modal('hide');
+    $('#confirm-delete-modal').modal('hide');
 });
 
 
