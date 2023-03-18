@@ -30,7 +30,7 @@ $(document).on('click', '.confirm-delete-user' , function() {
                 response = JSON.parse(response);
                 $('#row-' + response['id']).remove();
                 $('#select-box').val('-Please Select-');
-                $('.custom-control-input').prop('checked', false);
+                // $('.custom-control-input').prop('checked', false);
             },
         });
     }

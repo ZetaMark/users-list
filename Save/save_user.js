@@ -7,6 +7,8 @@ $('.save-user').click(function() {
     var status = $('#switch').prop('checked');
     var role = $('#select-role').val();
 
+    // Перевіряємо ім'я на пусті поля
+    if(firstName && lastName !== ""){
     // Надіслати дані на сервер
 $.ajax({
     type: "POST", // Використати метод POST для надсилання даних
@@ -77,6 +79,25 @@ $.ajax({
     },
 });
     $("#user-form-modal").modal("hide");
+} else {
+
+    // Якщо є пусті поля, то додаємо bootstrap класс is-invalid - підсвічуємо їх червоним
+    if(firstName == ""){
+        $("#first-name").addClass("is-invalid")}
+    else{
+        $("#first-name").removeClass("is-invalid");}
+    if(lastName == ""){
+        $("#last-name").addClass("is-invalid");}
+    else{
+        $("#last-name").removeClass("is-invalid");}
+
+    console.log("Заповніть рядки");
+
+}
+$('#user-form-modal').on('hidden.bs.modal', function () {
+    $("#first-name").removeClass("is-invalid");
+    $("#last-name").removeClass("is-invalid");
+});
 });
 
 

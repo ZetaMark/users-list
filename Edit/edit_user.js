@@ -24,6 +24,8 @@ $(document).on('click', '.edit-user', function(event) {
     $('#user-form-modal').on('hidden.bs.modal', function () {
         $(this).find('input').val('').prop('checked', false);
         $(this).find('select').val('Admin');
+        $("#first-name").removeClass("is-invalid");
+        $("#last-name").removeClass("is-invalid");
     });
     
 
