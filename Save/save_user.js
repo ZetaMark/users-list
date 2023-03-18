@@ -69,6 +69,11 @@ $.ajax({
              $("#table-body").append($tr);
              }
 
+            // Перевіряємо, чи всі чекбокси з класом .checkbox-item вибрані
+            var allChecked = $('.checkbox-item').length === $('.checkbox-item:checked').length;
+            // Змінюємо стан чекбокса з id all-items на allChecked
+            $('#all-items').prop('checked', allChecked);
+
     },
 });
     $("#user-form-modal").modal("hide");
