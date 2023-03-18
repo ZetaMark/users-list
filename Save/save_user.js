@@ -53,7 +53,7 @@ $('.save-user').click(function () {
                     var $td2 = $("<td>", { class: "text-nowrap align-middle", "data-first-name": first_name, "data-last-name": last_name, id: "name-" + id }).text(first_name + " " + last_name);
                     var $td3 = $("<td>", { class: "text-nowrap align-middle" }).append($("<span>", { id: "role-" + id }).text(role));
                     var $td4 = $("<td>", { class: "text-center align-middle", "data-status": status, id: "status-" + id }).append(
-                        $("<i>", { id: "status-circle-" + id, class: "fa fa-circle " + (status == 1 ? "active" : "not-active") + "-circle" })
+                        $("<i>", { "data-status": status, id: "status-circle-" + id, class: "fa fa-circle " + (status == 1 ? "active" : "not-active") + "-circle" })
                     );
                     var $td5 = $("<td>", { class: "text-center align-middle" }).append(
                         $("<div>", { class: "btn-group align-top" }).append(
