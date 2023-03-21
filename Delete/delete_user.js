@@ -6,6 +6,14 @@ $(document).on('click', '.call-modal-delete-user', function (event) {
     let id = [clickedDeleteButton.attr('data-id')];
     console.log(id);
 
+    var firstName = $('#name-'+ id).attr('data-first-name');
+    var lastName = $('#name-'+ id).attr( 'data-last-name');
+    var status = $('#status-'+id).attr('data-status') == 1 ? true : false;
+    var role = $('#role-'+id).text();
+    console.log(firstName, lastName, status, role)
+    const rowToDelete = `[Name: ${firstName} ${lastName}, Role: '${role}', Status: ${status}]`;
+    $('#confirm-delete-label').text(`Do you want to delete row: ${rowToDelete}?`);
+    
     $("#delete-id").val(JSON.stringify(id));
 });
 

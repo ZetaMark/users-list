@@ -26,6 +26,7 @@ function actionsBlockClick(event) {
   }
   else if (selectedValue == "Delete") {
     $("#delete-id").val(JSON.stringify(activeCheckboxes));
+    $('#confirm-delete-label').text(`Do you want to delete selected rows?`);
     $('#confirm-delete-modal').modal('show');
   }
   else if (selectedValue == "Set active") {

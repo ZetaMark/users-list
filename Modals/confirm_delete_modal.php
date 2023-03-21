@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-                <label for="delete-id" class="col-form-label">Do you want to delete selected rows?</label>
+                <label id = "confirm-delete-label" for="delete-id" class="col-form-label">Do you want to delete selected rows?</label>
                 <input type="hidden" class="form-control" id="delete-id">
         </div>
       </div>
