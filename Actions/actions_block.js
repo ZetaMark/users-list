@@ -34,15 +34,28 @@ function actionsBlockClick(event) {
       $.ajax({
         type: "POST", // Використати метод POST для надсилання даних
         url: "Actions/setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+        dataType: 'json',
         data: { // Надіслати дані у форматі JSON
           id: activeCheckboxes[i],
           active: 1
         },
         success: function (response) { // Обробник успішної відповіді від сервера
-          response = JSON.parse(response); // Вивести відповідь сервера в консоль
-          $('#status-circle-' + response['user']['id']).removeClass('not-active-circle').addClass('active-circle');
-          $('.custom-control-input').prop('checked', false);
-          $('#select-box').val('-Please Select-');
+          //response = JSON.parse(response); // Вивести відповідь сервера в консоль
+          if (response['status'] == true) {
+            $('#status-circle-' + response['user']['id']).removeClass('not-active-circle').addClass('active-circle');
+            $('.custom-control-input').prop('checked', false);
+            $('#select-box').val('-Please Select-');
+          }
+          else {
+            console.log(response);
+            errorMessage = response['error']['message'];
+            $('#actions_block_error_message').text(errorMessage).css({
+                "color": "red",
+                "font-weight": "bold"
+            })
+            $('#actions-block-error-modal').modal('show');
+
+          }
         },
       });
     }
@@ -53,15 +66,27 @@ function actionsBlockClick(event) {
       $.ajax({
         type: "POST", // Використати метод POST для надсилання даних
         url: "Actions/setActiveNotActive.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+        dataType: 'json',
         data: { // Надіслати дані у форматі JSON
           id: activeCheckboxes[i],
           active: 0
         },
         success: function (response) { // Обробник успішної відповіді від сервера
-          response = JSON.parse(response); // Вивести відповідь сервера в консоль
+          //response = JSON.parse(response); // Вивести відповідь сервера в консоль
+          if (response['status'] == true) {
           $('#status-circle-' + response['user']['id']).removeClass('active-circle').addClass('not-active-circle');
           $('.custom-control-input').prop('checked', false);
           $('#select-box').val('-Please Select-');
+          }
+          else {
+            console.log(response);
+            errorMessage = response['error']['message']
+            $('#actions_block_error_message').text(errorMessage).css({
+                "color": "red",
+                "font-weight": "bold"
+            })
+            $('#actions-block-error-modal').modal('show');
+          }
         },
       });
     }

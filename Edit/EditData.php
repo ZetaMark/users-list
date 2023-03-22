@@ -1,7 +1,7 @@
 <?php
 require_once '../Database/database.php';
 // Отримання змінних
-$id = NULL;
+$id = $_POST['id'];
 $action = $_POST['action'];
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
@@ -56,52 +56,52 @@ if(empty($lastName)){
 // }
 
 // Перед редагуванням перевіряємо чи існує користувач у бд.
+
+
 $sql = "
-    INSERT INTO user_list (id, first_name, last_name, status, role) 
-    VALUES ('$id', '$firstName', '$lastName', '$status', '$role')
+     UPDATE user_list
+     SET first_name = '$firstName',
+     last_name = '$lastName',
+     status = '$status',
+     role = '$role'
+     WHERE id = '$id';
 ";
 
 if (mysqli_query($conn, $sql)) {
-    // отримуємо Autoincement id з бд
-
-    $sqlLastInsertId = "SELECT LAST_INSERT_ID() as id;";
-    $LastInsertIdResult = mysqli_query($conn, $sqlLastInsertId);
-    $id = (int) mysqli_fetch_assoc($LastInsertIdResult)['id'];
-
-    $sql = "SELECT * FROM user_list WHERE id = '$id'";
-    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, "SELECT * FROM `user_list` WHERE id = $id ");
     $user = mysqli_fetch_assoc($result);
 
-    if($user['id'] == !NULL){
-        $response = array(
-            'status' => true,
-            'error' => null,
-            'user' => array(
-                'id' => $user['id'],
-                'first_name' => $user['first_name'],
-                'last_name' => $user['last_name'],
-                'role' => $user['role'],
-                'status' => $user['status']
-            )
-        );
-    }
-    else if ($user['id'] == NULL){
+    if($user == NULL){
         $response = array(
             'status' => false,
             'error' => array(
                 'code' => 404,
-                'message' => "Не вдалося створити користувача не знайдено."
-            )
+                'message' => "User not found."
+             ),
+            'user' => NULL
         );
+
         echo json_encode($response,JSON_UNESCAPED_UNICODE);
         die();
     }
+
+    $response = array(
+     'status' => true,
+     'error' => null,
+     'user' => array(
+         'id' => $user['id'],
+         'first_name' => $user['first_name'],
+         'last_name' => $user['last_name'],
+         'role' => $user['role'],
+         'status' => $user['status']
+     )
+ );
 
     echo json_encode($response);
 } else {
     $response = array(
         'status' => false,
-        'error' => mysqli_error($conn),
+        'error' => mysqli_error($conn,JSON_UNESCAPED_UNICODE),
         'user' => null
     );
     echo json_encode($response);

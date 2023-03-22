@@ -2,35 +2,34 @@
 $('.save-user').click(function () {
     // Получить значения из формы
     var id = $('#modal-id').val();
+    var action = $('#user-form-modal-action').attr('data-action');
     var firstName = $('#first-name').val();
     var lastName = $('#last-name').val();
     var status = $('#switch').prop('checked');
     var role = $('#select-role').val();
+    console.log(action); 
 
     // Перевіряємо ім'я на пусті поля
     if (firstName && lastName !== "") {
         // Надіслати дані на сервер
         $.ajax({
             type: "POST", // Використати метод POST для надсилання даних
-            url: "Save/saveData.php", // Вказати шлях до файлу PHP, який оброблятиме дані
+            url: id == "" ? "Save/saveData.php" : "Edit/editData.php"  , // Вказати шлях до файлу PHP, який оброблятиме дані
+            dataType: 'json',
+           // responseType: 'json',
             data: { // Надіслати дані у форматі JSON
                 id: id,
+                action: action,
                 firstName: firstName,
                 lastName: lastName,
                 status: status,
                 role: role
             },
             success: function (response) { // Обробник успішної відповіді від сервера
-                console.log(JSON.parse(response));
+                console.log(response);
                 // Вивести відповідь сервера в консоль
                 // Очистити поля форми
-                $('#modal-id').val('');
-                $('#first-name').val('');
-                $('#last-name').val('');
-                $('#switch').prop('checked', false);
-                $('#select-role').val('Admin');
-
-                response = JSON.parse(response)
+               // response = JSON.parse(response)
                 if (response['status'] == true) {
                     id = response['user']['id'];
                     first_name = response['user']['first_name'];
@@ -77,14 +76,30 @@ $('.save-user').click(function () {
                     var allChecked = $('.checkbox-item').length === $('.checkbox-item:checked').length;
                     // Змінюємо стан чекбокса з id all-items на allChecked
                     $('#all-items').prop('checked', allChecked);
-                } 
+
+                    $("#user-form-modal").modal("hide");
+
+                    //Очищаємо поля форми
+                    $('#modal-id').val('');
+                    $('user-form-modal-action').attr('data-action');
+                    $('#first-name').val('');
+                    $('#last-name').val('');
+                    $('#switch').prop('checked', false);
+                    $('#select-role').val('Admin');
+                    $('#user-form-modal-error-message').text('')
+                }
                 else {
-                    console.log(JSON.parse(response));
+                    console.log(response);
+                    errorMessage = response['error']['message']
+                    $('#user-form-modal-error-message').text(errorMessage).css({
+                        "margin-left": "10px",
+                        "color": "red",
+                        "font-weight": "bold"
+                    })
                 }
             }
         });
-        $("#user-form-modal").modal("hide");
-
+        
     }
     else {
 
@@ -95,8 +110,10 @@ $('.save-user').click(function () {
 
     }
     $('#user-form-modal').on('hidden.bs.modal', function () {
+        $("#user-form-modal-action").attr("data-action", "");
         $("#first-name").removeClass("is-invalid");
         $("#last-name").removeClass("is-invalid");
+        $('#user-form-modal-error-message').text('')
     });
 });
 

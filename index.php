@@ -44,6 +44,8 @@
         <?php include 'Modals/user_form_modal.php' ?>
         <?php include 'Modals/confirm_delete_modal.php' ?>
         <?php include 'Modals/actions_block_waring_modal.php' ?>
+        <?php include 'Modals/actions_block_error_modal.php' ?>
+
 
       </div>
     </div>

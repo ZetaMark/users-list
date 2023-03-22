@@ -8,6 +8,19 @@ if (mysqli_query($conn, $sql)) {
     $sql = "SELECT * FROM user_list WHERE id = '$id'";
     $result = mysqli_query($conn, $sql);
     $user = mysqli_fetch_assoc($result);
+    if($user == NULL){
+        $response = array(
+            'status' => false,
+            'error' => array(
+                'code' => 404,
+                'message' => "User not found."
+             ),
+            'user' => NULL
+        );
+
+        echo json_encode($response,JSON_UNESCAPED_UNICODE);
+        die();
+    }
     $response = array(
         'status' => true,
         'error' => null,

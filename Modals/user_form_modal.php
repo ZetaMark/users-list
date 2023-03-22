@@ -13,6 +13,9 @@
                 <input id="modal-id" type="hidden" data-id="">
             </div>
             <div class="form-group">
+                <input id="user-form-modal-action" type="hidden" data-action="">
+            </div>
+            <div class="form-group">
               <label for="first-name" class="col-form-label">First Name:</label>
               <input type="text" class="form-control" id="first-name">
             </div>
@@ -29,9 +32,9 @@
                 <select id="select-role" class="form-control">
                     <option value="Admin">Admin</option>
                     <option value="User">User</option>
-                  </select>
+                </select>
             </div>
-            
+            <span id="user-form-modal-error-message"></span>            
           </form>
         </div>
         <div class="modal-footer">
