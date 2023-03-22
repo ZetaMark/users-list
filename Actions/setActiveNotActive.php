@@ -15,7 +15,9 @@ if (mysqli_query($conn, $sql)) {
                 'code' => 404,
                 'message' => "User not found."
              ),
-            'user' => NULL
+             'user' => array(
+                'id' => $id
+            )
         );
 
         echo json_encode($response,JSON_UNESCAPED_UNICODE);
@@ -37,7 +39,9 @@ if (mysqli_query($conn, $sql)) {
     $response = array(
         'status' => false,
         'error' => mysqli_error($conn),
-        'user' => null,
+        'user' => array(
+            'id' => $id
+        )
     );
     echo json_encode($response);
 }           

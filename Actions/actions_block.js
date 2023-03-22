@@ -8,6 +8,8 @@ function actionsBlockClick(event) {
   // Отримати вибране значення у селекті
   const selectedValue = select.value;
 
+  var errorRows = "";
+
   // console.log(selectedValue); // Виводить обране значення селект боксу в консоль
 
   var activeCheckboxes = [];
@@ -48,13 +50,23 @@ function actionsBlockClick(event) {
           }
           else {
             console.log(response);
-            errorMessage = response['error']['message'];
+            errorMessage = response['error']['message']
             $('#actions_block_error_message').text(errorMessage).css({
                 "color": "red",
                 "font-weight": "bold"
             })
-            $('#actions-block-error-modal').modal('show');
-
+            errorUserId = response['user']['id']
+              firstName = $('#name-'+errorUserId).attr('data-first-name'),
+              lastName = $('#name-'+errorUserId).attr('data-last-name'),
+              userRole = $('#role-'+errorUserId).text(),
+              userStatus = $('#status-'+errorUserId).attr('data-status')
+              errorRow = `[Name: ${firstName} ${lastName}, Role: ${userRole}, Status: ${userStatus} ];`
+              errorRows += errorRow;
+              $('#actions_block_error_content').text(errorRows).css({
+                "color": "red",
+                "font-weight": "bold"
+              })
+              $('#actions-block-error-modal').modal('show');
           }
         },
       });
@@ -85,11 +97,23 @@ function actionsBlockClick(event) {
                 "color": "red",
                 "font-weight": "bold"
             })
-            $('#actions-block-error-modal').modal('show');
+            errorUserId = response['user']['id']
+              firstName = $('#name-'+errorUserId).attr('data-first-name'),
+              lastName = $('#name-'+errorUserId).attr('data-last-name'),
+              userRole = $('#role-'+errorUserId).text(),
+              userStatus = $('#status-'+errorUserId).attr('data-status')
+              errorRow = `[Name: ${firstName} ${lastName}, Role: ${userRole}, Status: ${userStatus} ];`
+              errorRows += errorRow;
+              $('#actions_block_error_content').text(errorRows).css({
+                "color": "red",
+                "font-weight": "bold"
+              })
+              $('#actions-block-error-modal').modal('show');
           }
         },
       });
     }
+
   }
 // Перевіряємо, чи всі чекбокси з класом .checkbox-item вибрані
 var allChecked = $('.checkbox-item').length === $('.checkbox-item:checked').length;

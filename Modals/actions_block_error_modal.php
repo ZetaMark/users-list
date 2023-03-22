@@ -10,7 +10,10 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-                <span id="actions_block_error_message" class="col-form-label"></span>
+          <p id="actions_block_error_message" class="col-form-label"></p>
+        </div>
+        <div class="form-group">
+          <p id="actions_block_error_content" ></p>
         </div>
       </div>
       <div class="modal-footer">
